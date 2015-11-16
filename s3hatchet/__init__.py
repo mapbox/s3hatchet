@@ -35,15 +35,18 @@ def loader(instream, output_dump, extractRegex, attributes, sField, sVar):
         idxs = np.where(dataset[sField] == f)
         click.echo('''FIELD:\t%s''' % (f))
         for v in sVar:
-            click.echo('''[%s]\t\tCount:\t%s
+            click.echo('''[%s]\t\t\tCount:\t%s
+    \t\t\tSum:\t%s
     \t\t\tMin:\t%s
     \t\t\tMean:\t%s
     \t\t\tMax:\t%s''' % (
                     v,
                     dataset[idxs].shape[0],
+                    dataset[idxs][v].sum(),
                     dataset[idxs][v].min(),
                     np.mean(dataset[idxs][v]),
                     dataset[idxs][v].max()
                     ))
+        click.echo('---------------------------------------------')
 
 
