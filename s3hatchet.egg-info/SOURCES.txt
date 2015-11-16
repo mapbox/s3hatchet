@@ -1,0 +1,12 @@
+README.rst
+setup.cfg
+s3hatchet/__init__.py
+s3hatchet.egg-info/PKG-INFO
+s3hatchet.egg-info/SOURCES.txt
+s3hatchet.egg-info/dependency_links.txt
+s3hatchet.egg-info/entry_points.txt
+s3hatchet.egg-info/not-zip-safe
+s3hatchet.egg-info/requires.txt
+s3hatchet.egg-info/top_level.txt
+s3hatchet/scripts/__init__.py
+s3hatchet/scripts/cli.py

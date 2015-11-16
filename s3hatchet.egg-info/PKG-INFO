@@ -1,0 +1,13 @@
+Metadata-Version: 1.0
+Name: s3hatchet
+Version: 0.0.1dev
+Summary: Split + summarize big s3 ls logs
+Home-page: https://github.com/mapbox/s3hatchet
+Author: Damon Burgett
+Author-email: damon@mapbox.com
+License: MIT
+Description: s3hatchet
+        =========
+        
+        Split + summarize big s3 ls logs.
+Platform: UNKNOWN
