@@ -1,4 +1,0 @@
-
-      [console_scripts]
-      s3hatchet=s3hatchet.scripts.cli:cli
-      
