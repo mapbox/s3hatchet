@@ -23,6 +23,10 @@ def load(input_ls, output_dump, extract_template, summarize):
 
     attributes = json.loads(attributes)
 
-    s3hatchet.loader(input_ls, output_dump, extractRegex, attributes, summarize)
+    sField, sVar = summarize
+
+    sVar = json.loads(sVar)
+
+    s3hatchet.loader(input_ls, output_dump, extractRegex, attributes, sField, sVar)
 
 cli.add_command(load)
