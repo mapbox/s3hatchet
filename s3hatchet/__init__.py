@@ -1,5 +1,5 @@
 import numpy as np
-import re, time, cPickle
+import re, time, cPickle, json
 
 import click
 
@@ -31,22 +31,38 @@ def loader(instream, output_dump, extractRegex, attributes, sField, sVar):
 
     dataset = np.array([i for i in instream], dtype=attributes)
 
+    output = {}
+
     for f in np.unique(dataset[sField]):
+        output[f] = {}
         idxs = np.where(dataset[sField] == f)
-        click.echo('''FIELD:\t%s''' % (f))
         for v in sVar:
-            click.echo('''[%s]\t\t\tCount:\t%s
-    \t\t\tSum:\t%s
-    \t\t\tMin:\t%s
-    \t\t\tMean:\t%s
-    \t\t\tMax:\t%s''' % (
-                    v,
-                    dataset[idxs].shape[0],
-                    dataset[idxs][v].sum(),
-                    dataset[idxs][v].min(),
-                    np.mean(dataset[idxs][v]),
-                    dataset[idxs][v].max()
-                    ))
-        click.echo('---------------------------------------------')
+            output[f][v] = {
+                'count': dataset[idxs].shape[0],
+                'sum': dataset[idxs][v].sum(),
+                'min': dataset[idxs][v].min(),
+                'mean': np.mean(dataset[idxs][v]),
+                'max': dataset[idxs][v].max()
+            }
+
+    click.echo(json.dumps(output))
+
+    # for f in np.unique(dataset[sField]):
+    #     idxs = np.where(dataset[sField] == f)
+    #     click.echo('''%s:\t%s''' % (sField, f))
+    #     for v in sVar:
+    #         click.echo('''[%s]\t\t\tCount:\t%s
+    # \t\t\tSum:\t%s
+    # \t\t\tMin:\t%s
+    # \t\t\tMean:\t%s
+    # \t\t\tMax:\t%s''' % (
+    #                 v,
+    #                 dataset[idxs].shape[0],
+    #                 dataset[idxs][v].sum(),
+    #                 dataset[idxs][v].min(),
+    #                 np.mean(dataset[idxs][v]),
+    #                 dataset[idxs][v].max()
+    #                 ))
+    #     click.echo('---------------------------------------------')
 
 
